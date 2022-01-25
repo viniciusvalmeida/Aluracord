@@ -22,6 +22,15 @@ export default function PaginaInicial() {
     const [username, setUserName] = useState('viniciusvalmeida')
     const roteamento = useRouter()
 
+    function validaUsername(){
+        if (username.length > 2) {
+            const validUserName = username
+            return validUserName
+        } else {
+            return 'viniciusvalmeida'
+        }
+    }    
+
     return (
         <>
             
@@ -143,7 +152,7 @@ export default function PaginaInicial() {
                                 borderRadius: "50%",
                                 marginBottom: "16px",
                             }}
-                            src={`https://github.com/${username}.png`}
+                            src={`https://github.com/${validaUsername()}.png`}
                         />
                         <Text
                             variant="body4"
@@ -155,7 +164,7 @@ export default function PaginaInicial() {
                                 borderRadius: "1000px",
                             }}
                         >
-                            {username}
+                            {validaUsername()}
                         </Text>
                     </Box>
                     {/* Photo Area */}

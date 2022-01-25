@@ -11,7 +11,7 @@ function Titulo(props) {
 
             <style jsx>{`
                 ${Tag} {
-                    color: ${appConfig.theme.colors.neutrals["900"]};
+                    color: ${appConfig.theme.colors.orange["999"]};
                 }
             `}</style>
         </>
@@ -98,7 +98,7 @@ export default function PaginaInicial() {
                                     mainColor:
                                         appConfig.theme.colors.neutrals[900],
                                     mainColorHighlight:
-                                        appConfig.theme.colors.primary[500],
+                                        appConfig.theme.colors.orange[500],
                                     backgroundColor:
                                         appConfig.theme.colors.neutrals[800],
                                 },
@@ -111,11 +111,11 @@ export default function PaginaInicial() {
                             buttonColors={{
                                 contrastColor:
                                     appConfig.theme.colors.neutrals["000"],
-                                mainColor: appConfig.theme.colors.primary[500],
+                                mainColor: appConfig.theme.colors.orange[500],
                                 mainColorLight:
-                                    appConfig.theme.colors.primary[400],
+                                    appConfig.theme.colors.orange[100],
                                 mainColorStrong:
-                                    appConfig.theme.colors.primary[600],
+                                    appConfig.theme.colors.orange[800],
                             }}
                         />
                     </Box>

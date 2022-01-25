@@ -30,9 +30,9 @@ export default function PaginaInicial() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    backgroundColor: appConfig.theme.colors.primary[500],
+                    backgroundColor: appConfig.theme.colors.primary['000'],
                     backgroundImage:
-                        "url(https://virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain.jpg)",
+                        "url(https://tm.ibxk.com.br/2017/11/27/27220056648002.jpg)",
                     backgroundRepeat: "no-repeat",
                     backgroundSize: "cover",
                     backgroundBlendMode: "multiply",

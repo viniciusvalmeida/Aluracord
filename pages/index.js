@@ -18,10 +18,21 @@ function Titulo(props) {
     );
 }
 
+async function getUserData(username) {
+    let res = await fetch(`https://api.github.com/users/${username}`)
+    let data = res.json()
+    return data
+}
+
 export default function PaginaInicial() {
     const [username, setUserName] = useState('viniciusvalmeida')
     const roteamento = useRouter()
-
+    let dados 
+    getUserData(username).then(res => {dados = res})
+    
+    
+    console.log(dados)
+    
     function validaUsername(){
         if (username.length > 2) {
             const validUserName = username

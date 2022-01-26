@@ -29,20 +29,21 @@ export default function PaginaInicial() {
     const roteamento = useRouter()
     const [dados, setDados] = useState({})
     
-    useEffect(() => {
-        getUserData(username).then(data => {
-            setDados(data)
-        })
-    },[])
-    
     function validaUsername(){
         if (username.length > 2) {
-            const validUserName = username
+            let validUserName = username
             return validUserName
         } else {
             return 'viniciusvalmeida'
         }
-    }    
+    }
+
+    useEffect(() => {
+        getUserData(username).then(data => {
+            setDados(data)
+        })
+    },[username])
+    
 
     return (
         <>

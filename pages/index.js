@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import { Box, Button, Text, TextField, Image } from "@skynexui/components";
 import appConfig from "../config.json";
@@ -20,18 +20,20 @@ function Titulo(props) {
 
 async function getUserData(username) {
     let res = await fetch(`https://api.github.com/users/${username}`)
-    let data = res.json()
+    let data = await res.json()
     return data
 }
 
 export default function PaginaInicial() {
     const [username, setUserName] = useState('viniciusvalmeida')
     const roteamento = useRouter()
-    let dados 
-    getUserData(username).then(res => {dados = res})
+    const [dados, setDados] = useState({})
     
-    
-    console.log(dados)
+    useEffect(() => {
+        getUserData(username).then(data => {
+            setDados(data)
+        })
+    },[])
     
     function validaUsername(){
         if (username.length > 2) {
@@ -176,6 +178,18 @@ export default function PaginaInicial() {
                             }}
                         >
                             {validaUsername()}
+                        </Text>
+                        <Text
+                            variant="body4"
+                            styleSheet={{
+                                color: appConfig.theme.colors.neutrals[200],
+                                backgroundColor:
+                                    appConfig.theme.colors.neutrals[900],
+                                padding: "3px 10px",
+                                borderRadius: "1000px",
+                            }}
+                        >
+                            {dados.location}
                         </Text>
                     </Box>
                     {/* Photo Area */}

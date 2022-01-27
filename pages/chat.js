@@ -62,7 +62,7 @@ export default function ChatPage() {
                         padding: "16px",
                     }}
                 >
-                    <MessageList mensagens={listaDeMensagens} />
+                    <MessageList mensagens={listaDeMensagens} setListaDeMensagens={setListaDeMensagens}/>
                     
                     <Box
                         as="form"
@@ -132,6 +132,11 @@ function Header() {
 }
 
 function MessageList(props) {
+    function deletarMsg(id) {
+        const novaLista = props.mensagens.filter(mensagem => mensagem.id !== id)
+        props.setListaDeMensagens([...novaLista])
+    }
+
     return (
         <Box
             tag="ul"
@@ -185,6 +190,23 @@ function MessageList(props) {
                             >
                                 {new Date().toLocaleDateString()}
                             </Text>
+                            <Box
+                                styleSheet={{
+                                width: "100%",
+                                marginBottom: '8px',
+                                display: "flex",
+                                alignItems: "right",
+                                justifyContent: "end",
+                                gap: "10px"
+                                }}
+                            >
+                                <Button
+                                    variant="tertiary"
+                                    colorVariant="primary"
+                                    iconName="trash"
+                                    onClick={() => deletarMsg(mensagem.id)}
+                                />
+                            </Box>
                         </Box>
                         {mensagem.texto}
                     </Text>

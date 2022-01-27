@@ -20,6 +20,7 @@ export default function ChatPage() {
         setMensagem("");
     }
     // ./Sua lógica vai aqui
+
     return (
         <Box
             styleSheet={{
@@ -93,6 +94,12 @@ export default function ChatPage() {
                                 color: appConfig.theme.colors.neutrals[200],
                             }}
                         />
+                        <Button
+                            variant="primary"
+                            colorVariant="primary"
+                            label="Enviar"
+                            onClick={() => handleNovaMensagem(mensagem)}
+                        />
                     </Box>
                 </Box>
             </Box>
@@ -129,12 +136,12 @@ function MessageList(props) {
         <Box
             tag="ul"
             styleSheet={{
-                overflow: "scroll",
+                overflow: "auto",
                 display: "flex",
                 flexDirection: "column-reverse",
                 flex: 1,
                 color: appConfig.theme.colors.neutrals["000"],
-                marginBottom: "16px",
+                marginBottom: "16px"
             }}
         >
             {props.mensagens.map((mensagem) => {

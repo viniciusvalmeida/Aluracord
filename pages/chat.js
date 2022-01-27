@@ -125,7 +125,6 @@ function Header() {
 }
 
 function MessageList(props) {
-    // let mensagem = props.mensagens;
     return (
         <Box
             tag="ul"

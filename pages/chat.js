@@ -125,7 +125,7 @@ function Header() {
 }
 
 function MessageList(props) {
-    let mensagem = props.mensagens;
+    // let mensagem = props.mensagens;
     return (
         <Box
             tag="ul"
@@ -138,7 +138,7 @@ function MessageList(props) {
                 marginBottom: "16px",
             }}
         >
-            {mensagem.map((mensagem) => {
+            {props.mensagens.map((mensagem) => {
                 return (
                     <Text
                         key={mensagem.id}

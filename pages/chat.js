@@ -195,11 +195,12 @@ function MessageList(props) {
                                 width: "100%",
                                 marginBottom: '8px',
                                 display: "flex",
-                                alignItems: "right",
-                                justifyContent: "end",
+                                alignItems: "center",
+                                justifyContent: "space-between",
                                 gap: "10px"
                                 }}
                             >
+                                {mensagem.texto}
                                 <Button
                                     variant="tertiary"
                                     colorVariant="primary"
@@ -208,7 +209,7 @@ function MessageList(props) {
                                 />
                             </Box>
                         </Box>
-                        {mensagem.texto}
+                        {/* {mensagem.texto} */}
                     </Text>
                 );
             })}

@@ -42,9 +42,7 @@ export default function PaginaInicial() {
         getUserData(username).then(data => {
             setDados(data)
         })
-    },[username])
-    
-
+    },[validaUsername()])
     return (
         <>
             

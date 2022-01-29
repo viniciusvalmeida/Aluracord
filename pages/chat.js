@@ -1,25 +1,48 @@
 import { Box, Text, TextField, Image, Button } from "@skynexui/components";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import appConfig from "../config.json";
+import { createClient } from "@supabase/supabase-js"
+
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzQ4NTY1OSwiZXhwIjoxOTU5MDYxNjU5fQ.g0U99BmAIpk6CSbVEBAxflY8w-gQ2zXxbnGkvPIc98Q'
+const SUPABASE_URL = 'https://nybwuzzgxmailyiuoynf.supabase.co'
+const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+
+
+
 
 export default function ChatPage() {
-    // Sua lógica vai aqui
     const [mensagem, setMensagem] = useState("");
     const [listaDeMensagens, setListaDeMensagens] = useState([]);
 
+    useEffect(() => {
+        supabaseClient.from('mensagens')
+                        .select('*')
+                        .order('id', {ascending: false})
+                        .then(({ data }) => {
+                            console.log(data)
+                            setListaDeMensagens(data)
+                        })
+    },[])
+
     function handleNovaMensagem(novaMensagem) {
         const mensagem = {
-            id: listaDeMensagens.length + 1,
-            de: "Vinícius",
+            //id: listaDeMensagens.length + 1,
+            de: 'viniciusvalmeida',
             texto: novaMensagem,
         };
-        setListaDeMensagens([
-            mensagem,
-            ...listaDeMensagens
-        ]);
-        setMensagem("");
+
+        supabaseClient.from('mensagens')
+                        .insert([
+                            mensagem
+                        ])
+                        .then(({data}) => {
+                            setListaDeMensagens([
+                                data[0],
+                                ...listaDeMensagens
+                            ]);
+                            setMensagem("");
+                        })
     }
-    // ./Sua lógica vai aqui
 
     return (
         <Box
@@ -62,7 +85,7 @@ export default function ChatPage() {
                         padding: "16px",
                     }}
                 >
-                    <MessageList mensagens={listaDeMensagens} setListaDeMensagens={setListaDeMensagens}/>
+                    <MessageList mensagens={listaDeMensagens} setListaDeMensagens={setListaDeMensagens} listaDeMensagens={listaDeMensagens}/>
                     
                     <Box
                         as="form"
@@ -133,8 +156,16 @@ function Header() {
 
 function MessageList(props) {
     function deletarMsg(id) {
-        const novaLista = props.mensagens.filter(mensagem => mensagem.id !== id)
-        props.setListaDeMensagens([...novaLista])
+        //const novaLista = props.mensagens.filter(mensagem => mensagem.id !== id)
+        supabaseClient
+                    .from('mensagens')
+                    .delete()
+                    .match({id: id})
+                    .then(({data}) => {
+                        const novaLista = props.mensagens.filter(mensagem => mensagem.id !== data[0].id)
+                        props.setListaDeMensagens([...novaLista])
+                    })
+        //props.setListaDeMensagens([...novaLista])
     }
 
     return (
@@ -177,7 +208,7 @@ function MessageList(props) {
                                     display: "inline-block",
                                     marginRight: "8px",
                                 }}
-                                src={`https://github.com/viniciusvalmeida.png`}
+                                src={`https://github.com/${mensagem.de}.png`}
                             />
                             <Text tag="strong">{mensagem.de}</Text>
                             <Text

@@ -19,7 +19,6 @@ export default function ChatPage() {
                         .select('*')
                         .order('id', {ascending: false})
                         .then(({ data }) => {
-                            console.log(data)
                             setListaDeMensagens(data)
                         })
     },[])
@@ -156,7 +155,6 @@ function Header() {
 
 function MessageList(props) {
     function deletarMsg(id) {
-        //const novaLista = props.mensagens.filter(mensagem => mensagem.id !== id)
         supabaseClient
                     .from('mensagens')
                     .delete()
@@ -165,7 +163,6 @@ function MessageList(props) {
                         const novaLista = props.mensagens.filter(mensagem => mensagem.id !== data[0].id)
                         props.setListaDeMensagens([...novaLista])
                     })
-        //props.setListaDeMensagens([...novaLista])
     }
 
     return (

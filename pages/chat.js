@@ -8,6 +8,7 @@ const SUPABASE_URL = 'https://nybwuzzgxmailyiuoynf.supabase.co'
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
 export default function ChatPage() {
+    const [user, setUser] = useState('')
     const [mensagem, setMensagem] = useState("");
     const [listaDeMensagens, setListaDeMensagens] = useState([]);
 
@@ -18,12 +19,12 @@ export default function ChatPage() {
                         .then(({ data }) => {
                             setListaDeMensagens(data)
                         })
+        setUser(window.location.search.substring(1).split('?').toString())
     },[])
 
     function handleNovaMensagem(novaMensagem) {
         const mensagem = {
-            //id: listaDeMensagens.length + 1,
-            de: 'viniciusvalmeida',
+            de: user,
             texto: novaMensagem,
         };
 

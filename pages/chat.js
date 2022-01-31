@@ -82,7 +82,7 @@ export default function ChatPage() {
                         padding: "16px",
                     }}
                 >
-                    <MessageList mensagens={listaDeMensagens} setListaDeMensagens={setListaDeMensagens} listaDeMensagens={listaDeMensagens}/>
+                    <MessageList mensagens={listaDeMensagens} setListaDeMensagens={setListaDeMensagens}/>
                     
                     <Box
                         as="form"

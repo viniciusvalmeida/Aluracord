@@ -82,7 +82,7 @@ export default function PaginaInicial() {
                         as="form"
                         onSubmit={e => {
                             e.preventDefault()
-                            roteamento.push(`/chat?${validaUsername()}`)
+                            roteamento.push(`/chat?username=${validaUsername()}`)
                         }}
                         styleSheet={{
                             display: "flex",

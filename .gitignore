@@ -77,3 +77,6 @@ typings/
 
 # Package-lock
 package-lock.json
+
+# DS_Store
+.DS_Store

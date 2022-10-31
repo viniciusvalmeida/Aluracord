@@ -223,12 +223,21 @@ function MessageList(props) {
                                 }}
                                 src={`https://github.com/${mensagem.de}.png`}
                             />
-                            <Text tag="strong">{mensagem.de}</Text>
+                            <Text 
+                                tag="strong"
+                                styleSheet={{
+                                    fontFamily: 'Open Sans, sans-serif'
+                                }}
+                            >
+                                {mensagem.de}
+                            </Text>
+                            
                             <Text
                                 styleSheet={{
                                     fontSize: "10px",
                                     marginLeft: "8px",
                                     color: appConfig.theme.colors.neutrals[300],
+                                    fontFamily: 'Open Sans, sans-serif'
                                 }}
                                 tag="span"
                             >

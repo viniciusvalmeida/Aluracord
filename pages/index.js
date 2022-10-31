@@ -92,6 +92,7 @@ export default function PaginaInicial() {
                             width: { xs: "100%", sm: "50%" },
                             textAlign: "center",
                             marginBottom: "32px",
+                            fontFamily: 'Open Sans, sans-serif'
                         }}
                     >
                         <Titulo tag="h2">Boas vindas de volta!</Titulo>
@@ -100,6 +101,7 @@ export default function PaginaInicial() {
                             styleSheet={{
                                 marginBottom: "32px",
                                 color: appConfig.theme.colors.neutrals[300],
+                                fontFamily: 'Open Sans, sans-serif'
                             }}
                         >
                             {appConfig.name}
@@ -174,6 +176,7 @@ export default function PaginaInicial() {
                                     appConfig.theme.colors.neutrals[900],
                                 padding: "3px 10px",
                                 borderRadius: "1000px",
+                                fontFamily: 'Open Sans, sans-serif'
                             }}
                         >
                             {validaUsername()}
@@ -186,6 +189,7 @@ export default function PaginaInicial() {
                                     appConfig.theme.colors.neutrals[900],
                                 padding: "3px 10px",
                                 borderRadius: "1000px",
+                                fontFamily: 'Open Sans, sans-serif'
                             }}
                         >
                             {dados.location}
